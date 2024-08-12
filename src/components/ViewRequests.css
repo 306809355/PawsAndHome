@@ -1,0 +1,63 @@
+.view-requests {
+  padding: 20px;
+  background-color: #f9f9f9;
+}
+
+.view-requests h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 2em;
+  color: #333;
+}
+
+.requests-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.requests-table th,
+.requests-table td {
+  padding: 15px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.requests-table th {
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+.requests-table tr:hover {
+  background-color: #f1f1f1;
+}
+
+.requests-table button {
+  margin-right: 10px;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.9em;
+}
+
+.requests-table button:hover {
+  opacity: 0.8;
+}
+
+.requests-table .approve-button {
+  background-color: #4caf50;
+  color: #fff;
+}
+
+.requests-table .deny-button {
+  background-color: #f44336;
+  color: #fff;
+}
+
+@media (max-width: 768px) {
+  .requests-table {
+    font-size: 0.9em;
+  }
+}

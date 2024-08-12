@@ -1,25 +1,58 @@
-import logo from './logo.svg';
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
+import NavBar from './components/HeaderandFooter/NavBar';
+import Login from './components/Validation/LogIn';
+import Home from './components/UserContents/Home';
+import SignUp from './components/Validation/SignUp';
+import DashboardLayout from './components/Dashboard/DashboardLayout';
+import AdoptionForm from './components/UserContent/AdoptionForm';
+import PetSurrender from './components/UserContent/PetSurrender';
+import AdoptPet from './components/UserContent/AdoptPet';
+import PetDetail from './components/UserContent/PetDetail';
+import Profile from './components/UserContents/Profile';
+import Payment from './components/UserContent/Payment';
+
+import { AuthProvider, useAuth } from './components/Authorization/AuthContext';
 import './App.css';
+import '@fortawesome/fontawesome-free/css/all.min.css';
 
 function App() {
+  const { isLoggedIn, userId } = useAuth();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+        <NavBar isLoggedIn={isLoggedIn} userId={userId} />
+        <div className="main-content">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<SignUp />} />
+            <Route
+              path="/dashboard/*"
+              element={isLoggedIn ? <DashboardLayout /> : <Navigate to="/login" />}
+            />
+            <Route path="/available" element={<AdoptPet />} />
+            <Route path="/PetPickUp" element={<PetSurrender />} />
+            <Route path="/availablepets" element={<AdoptPet />} />
+            <Route path="/pet/:id" element={<PetDetail />} />
+            <Route path="/adopt/:petId" element={<AdoptionForm />} />
+            <Route
+              path="/settings"
+              element={isLoggedIn ? <Profile /> : <Navigate to="/login" />}
+            />
+            <Route path="/payment" element={<Payment />} />
+          </Routes>
+        </div>
+      </div>
+    </Router>
   );
 }
 
-export default App;
+export default function AppWrapper() {
+  return (
+    <AuthProvider>
+      <App />
+    </AuthProvider>
+  );
+}

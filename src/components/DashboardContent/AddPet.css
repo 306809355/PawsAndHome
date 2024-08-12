@@ -1,0 +1,111 @@
+.add-pet-form-container {
+  width: 50%;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.add-pet-form-container h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.form-group-custom {
+  margin-bottom: 15px;
+}
+
+.form-group-custom label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #555;
+}
+
+.form-group-custom input,
+.form-group-custom select,
+.form-group-custom textarea {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  outline: none;
+}
+
+.form-group-custom input[type="file"] {
+  padding: 0;
+}
+
+.add-pet-button {
+  display: inline-block;
+  width: 100%;
+  margin-top: 10px;
+  padding: 12px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.add-pet-button:hover {
+  background-color: #0056b3;
+}
+
+.photo-preview {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: #f1f1f1;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.photo-preview img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.photo-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+}
+
+.photo-details p {
+  margin: 0;
+  color: #555;
+}
+
+.photo-details button {
+  background-color: #dc3545;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 5px 10px;
+}
+
+.photo-details button:hover {
+  background-color: #c82333;
+}
+
+.form-message {
+  margin-top: 10px;
+  color: #28a745;
+  text-align: center;
+}
+
+.form-error {
+  margin-top: 10px;
+  color: #d9534f;
+  text-align: center;
+}

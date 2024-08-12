@@ -1,0 +1,75 @@
+/* PetDetail.css */
+
+.pet-detail-container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+  }
+  
+  .pet-detail-image {
+    width: 100%;
+    height: auto;
+    max-height: 400px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 20px;
+  }
+  
+  .pet-detail-info {
+    font-family: Arial, sans-serif;
+  }
+  
+  .pet-detail-info h1 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    color: #333;
+  }
+  
+  .pet-detail-info p {
+    font-size: 1rem;
+    margin: 5px 0;
+    color: #555;
+  }
+  
+  .pet-detail-info strong {
+    color: #333;
+  }
+  
+  .pet-detail-info .pet-detail-description {
+    margin-top: 10px;
+    font-size: 1rem;
+    color: #777;
+  }
+  
+  .pet-detail-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+  
+  .pet-detail-buttons button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+  }
+  
+  .pet-detail-buttons button:hover {
+    background-color: #0056b3;
+  }
+  
+  .pet-detail-buttons .pet-detail-adopt-button {
+    background-color: #28a745;
+  }
+  
+  .pet-detail-buttons .pet-detail-adopt-button:hover {
+    background-color: #218838;
+  }
+  

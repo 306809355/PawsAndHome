@@ -1,0 +1,410 @@
+/* General styles */
+.home-page-container {
+  position: relative;
+  overflow: hidden; /* Hide overflow to keep the effect clean */
+}
+
+.home-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, #a2c2e1, #e5e5e5);
+  background-size: 200% 200%;
+  animation: gradientAnimation 10s ease infinite;
+  z-index: -1; /* Ensure it stays behind the content */
+  clip-path: ellipse(80% 70% at 50% 50%); /* Curve-shaped design */
+}
+
+@keyframes gradientAnimation {
+  0% { background-position: 0% 0%; }
+  50% { background-position: 100% 100%; }
+  100% { background-position: 0% 0%; }
+}
+
+.home-hero-container {
+  position: relative;
+  width: 100%;
+  max-height: 600px; /* Adjust as needed */
+  padding-bottom: 80px; /* Ensure space for the search-container and margin below */
+}
+
+.home-hero-image {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.home-hero-text {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 2em;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.search-container {
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+}
+
+.search-select {
+  height: 42px;
+  padding: 5px;
+}
+
+.search-input {
+  padding: 10px;
+  font-size: 1em;
+  border: 1px solid #ccc;
+  border-radius: 4px 0 0 4px;
+  outline: none;
+  width: 300px;
+}
+
+.search-button {
+  padding: 10px 20px;
+  font-size: 1em;
+  border: 1px solid #ccc;
+  border-left: none;
+  background-color: #007bff;
+  color: white;
+  border-radius: 0 4px 4px 0;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.search-button:hover {
+  background-color: #0056b3;
+}
+/* Ensure the "How To Adopt" title is centered */
+.adoption-steps {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 40px 20px; /* Added padding to create space around the section */
+  background-color: #f9f9f9;
+  margin-top: -100px; /* Negative margin to pull up the section so that it overlaps with the hero image */
+  z-index: 1; /* Ensure it sits above the hero image */
+  border-radius: 15px; /* Rounded corners for better appearance */
+  text-align: center; /* Center text for all content in this section */
+}
+
+.adoption-steps h1 {
+  width: 100%;
+  margin: 0 auto 40px; /* Centering h1 and adding margin below */
+  font-size: 2em; /* Adjust size as needed */
+  color: #333; /* Adjust color if needed */
+}
+
+.step {
+  flex: 1 1 200px;
+  max-width: 250px;
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background-color: #fff;
+}
+
+.icon {
+  font-size: 3em;
+  color: #007BFF;
+  margin-bottom: 10px;
+}
+
+.step h3 {
+  font-size: 1.5em;
+  margin: 10px 0;
+}
+
+.step p {
+  font-size: 1em;
+  line-height: 1.5;
+  color: #666;
+}
+/* Existing styles... */
+
+/* Join Us Section Styling */
+.join-us {
+  padding: 40px 20px;
+  background-color: #f5f5f5;
+  text-align: center;
+}
+
+.join-us h2 {
+  margin-bottom: 30px;
+  font-size: 2em;
+  color: #333;
+}
+
+.join-us-options {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.join-us-item {
+  flex: 1 1 200px;
+  max-width: 250px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background-color: #fff;
+  text-align: center;
+}
+
+.join-icon {
+  font-size: 3em;
+  color: #007bff;
+  margin-bottom: 10px;
+}
+
+.join-us-item h3 {
+  font-size: 1.2em;
+  margin: 10px 0;
+  color: #333;
+}
+/* Reviews Section Styling */
+.reviews-section {
+  padding: 40px 20px;
+  background-color: #f5f5f5; /* Background color for the section */
+  text-align: center;
+  overflow: hidden; /* Hide overflow for the sliding effect */
+  position: relative; /* Needed for sliding effect */
+  border-radius: 15px; /* Rounded corners for consistency */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.reviews-section h2 {
+  margin-bottom: 30px;
+  font-size: 2em;
+  color: #333;
+}
+
+.reviews-row {
+  display: flex;
+  overflow: hidden; /* Hide horizontal overflow */
+  width: 100%; /* Ensure the container width is full */
+}
+
+.review-wrapper {
+  display: flex;
+  width: calc(400px * 5); /* Total width of all reviews shown in the viewport */
+  animation: slide 30s linear infinite; /* Adjust the duration as needed */
+}
+
+.review {
+  display: flex;
+  flex: 0 0 auto; /* Ensure each review maintains its width */
+  width: 400px; /* Adjust width as needed for larger grid */
+  height: 250px; /* Increased height */
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-right: 20px; /* Space between reviews */
+  box-sizing: border-box; /* Ensure padding and border are included in the height */
+  display: flex; /* Use flex to align content */
+  flex-direction: column; /* Align content vertically */
+}
+
+.review-left {
+  display: flex;
+  align-items: flex-start;
+  flex: 1; /* Allow it to grow and fill available space */
+  margin-right: 10px; /* Add space between left and right sections */
+  overflow: hidden; /* Hide overflow for better text fit */
+}
+
+.review-icon {
+  font-size: 3em;
+  color: #007bff;
+  margin-right: 20px;
+}
+
+.review-info {
+  max-width: calc(100% - 70px); /* Adjust based on icon size and margins */
+  overflow: hidden; /* Hide overflow text */
+  text-overflow: ellipsis; /* Show ellipsis when text overflows */
+  word-wrap: break-word; /* Break long words */
+}
+
+.review-info h3 {
+  margin: 0;
+  font-size: 1.5em;
+  color: #333;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.review-info p {
+  font-size: 1em;
+  color: #666;
+  margin: 10px 0 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+}
+
+.review-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex: 1; /* Allow it to grow and fill available space */
+}
+
+.review-image {
+  max-width: 100%;
+  max-height: 120px; /* Adjust as needed for vertical space */
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 10px; /* Space between images */
+}
+
+/* Sliding Effect */
+@keyframes slide {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); } /* Adjust for seamless effect */
+}
+/* Latest Stories Section Styling */
+.latest-stories {
+  padding: 40px 20px;
+  background-color: #f9f9f9;
+  text-align: center;
+  border-radius: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin: 20px 0; /* Margin to separate from other sections */
+}
+
+.latest-stories h2 {
+  margin-bottom: 30px;
+  font-size: 2em;
+  color: #333;
+}
+
+.latest-stories-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Responsive grid */
+  gap: 20px;
+}
+
+.story {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: left; /* Align text to the left for readability */
+}
+
+.story h3 {
+  margin-top: 0;
+  font-size: 1.5em;
+  color: #333;
+}
+
+.story p {
+  font-size: 1em;
+  color: #666;
+  margin: 10px 0;
+}
+
+.story a {
+  display: inline-block;
+  margin-top: 10px;
+  color: #007bff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.story a:hover {
+  text-decoration: underline;
+}
+/* Ready to Adopt Your Perfect Pet Section Styling */
+.adopt-your-pet-container {
+  padding: 40px 20px;
+  background-color: #f9f9f9;
+  text-align: center;
+  border-radius: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin: 20px 0; /* Margin to separate from other sections */
+}
+
+.adopt-image {
+  max-width: 500px;
+  height: 350px;
+  border-radius: 8px;
+  margin-bottom: 20px; /* Space between image and text */
+}
+.application-button {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 5px;
+  border: 1px solid #007bff;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.application-button:hover {
+  background-color: #0056b3;
+  border-color: #0056b3;
+}
+/* Home.css */
+
+/* Styling for city icons */
+.our-services {
+  background-color: #f9f9f9;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.our-services h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.city-icons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.city-icon {
+  text-align: center;
+  margin: 30px;
+}
+
+.city-name {
+  display: block;
+  margin-top: 15px;
+  font-size: 1rem;
+}
+
+.city-image {
+  width: 100px; /* Adjust size as needed */
+  height: 100px; /* Adjust size as needed */
+  border-radius: 50%;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+.model-content{
+  margin-top: 100px;
+}

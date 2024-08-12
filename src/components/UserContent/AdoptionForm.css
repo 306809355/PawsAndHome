@@ -1,0 +1,256 @@
+/* Existing Styles for Overall Page */
+
+.adopt-page-container {
+  position: relative;
+  overflow: hidden;
+  font-family: Arial, sans-serif;
+}
+
+.adopt-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, #a2c2e1, #e5e5e5);
+  background-size: 200% 200%;
+  animation: gradientAnimation 10s ease infinite;
+  z-index: -1;
+  clip-path: ellipse(80% 70% at 50% 50%);
+}
+
+@keyframes gradientAnimation {
+  0% { background-position: 0% 0%; }
+  50% { background-position: 100% 100%; }
+  100% { background-position: 0% 0%; }
+}
+
+.adopt-hero-container {
+  position: relative;
+  width: 100%;
+}
+
+.adopt-hero-image {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+}
+
+.adopt-hero-text {
+  position: absolute;
+  top: 50%;
+  left: 5%;
+  transform: translateY(-50%);
+  color: white;
+  font-size: 3em;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+  text-align: right;
+  width: 90%;
+}
+
+.surrender-info {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+  padding: 20px;
+  margin: 20px auto;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: calc(100% - 40px);
+  max-width: 99%;
+}
+
+.grid-header {
+  grid-column: span 3;
+}
+
+.call-to-action {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 40px 20px;
+  margin: 20px auto;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  width: calc(100% - 40px);
+  max-width: 1450px;
+}
+
+.cta-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  flex: 1;
+  padding: 0 20px;
+}
+
+.heart {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+}
+
+.heart-icon {
+  font-size: 250px;
+  color: #f00;
+}
+
+.heart-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 24px;
+  color: #fff;
+  font-weight: bold;
+  text-align: center;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+.info {
+  max-width: 600px;
+}
+
+.info p {
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.cta-item:hover {
+  background-color: #f5f5f5;
+  transform: scale(1.02);
+  transition: all 0.3s ease;
+}
+
+@media (max-width: 768px) {
+  .call-to-action {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .cta-item {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .heart {
+    width: 100%;
+  }
+}
+
+/* Updated Styles for the Form */
+
+.adoption-form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Align items to the start (left) */
+  padding: 20px;
+  margin: 20px auto;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: calc(100% - 40px);
+  max-width: 800px;
+}
+
+.adoption-form label {
+  margin-bottom: 5px;
+  font-weight: bold;
+  display: block; /* Ensure labels are block elements */
+}
+
+.adoption-form input[type="text"],
+.adoption-form input[type="email"],
+.adoption-form input[type="date"],
+.adoption-form select,
+.adoption-form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px; /* Add margin at the bottom */
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.adoption-form textarea {
+  resize: vertical;
+  height: 100px;
+}
+
+.submit-button {
+  background-color: #3d21bc;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.submit-button:hover {
+  background-color: #2a1f8f;
+}
+
+.form-navigation {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.back-button, .next-button, .submit-button {
+  margin: 0 10px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.back-button {
+  background-color: #ccc;
+}
+
+.next-button {
+  background-color: #3d21bc;
+  color: white;
+}
+
+.next-button:hover, .submit-button:hover {
+  background-color: #2a1f8f;
+}
+
+@media (max-width: 768px) {
+  .adoption-form {
+    width: 100%;
+    padding: 10px;
+  }
+}
+
+.step4-container {
+  padding: 20px;
+  margin: 20px auto;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: calc(100% - 40px);
+  max-width: 800px;
+}
+
+.step4-points {
+  text-align: left; /* Ensure text is aligned to the left */
+}
+
+.step4-points ul {
+  list-style-type: none; /* Remove bullet points */
+  padding: 0; /* Remove default padding */
+  margin: 0; /* Remove default margin */
+}
+
+.step4-points li {
+  padding: 10px 0; /* Add padding for spacing between items */
+  font-size: 16px; /* Adjust font size as needed */
+  line-height: 1.6; /* Adjust line height for readability */
+}

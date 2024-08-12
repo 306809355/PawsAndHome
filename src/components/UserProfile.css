@@ -1,0 +1,135 @@
+/* UserProfiles.css */
+
+.user-profiles {
+    padding: 20px;
+    background-color: #f9f9f9;
+  }
+  
+  .user-profiles h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .search-bar {
+    position: relative; /* Ensure the icon is positioned relative to this container */
+    text-align: right; /* Align the text and input to the right */
+    margin-bottom: 20px;
+}
+
+.search-bar input {
+    padding: 10px 10px 10px 40px; /* Add extra padding on the left for the icon */
+    font-size: 1em;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 200px;
+}
+
+.search-bar i {
+    position: absolute;
+    left: 10px; /* Adjust if necessary */
+    top: 50%;
+    transform: translateY(-50%);
+    color: #666;
+}
+
+  .profiles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+  }
+  
+  .profile-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.2s;
+  }
+  
+  .profile-card:hover {
+    transform: scale(1.05);
+  }
+  
+  .profile-image-wrapper {
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f4f4f4;
+  }
+  
+  .profile-image {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: cover;
+  }
+  
+  .profile-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    font-size: 2em;
+    color: #666;
+    background-color: #ddd;
+  }
+  
+  .profile-name {
+    padding: 15px;
+    text-align: center;
+    font-size: 1.2em;
+    color: #333;
+  }
+  
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+  }
+  
+  .modal-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 500px;
+    width: 100%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .modal-content img {
+    max-width: 100%;
+    border-radius: 10px;
+  }
+  
+  .modal-info {
+    margin-top: 20px;
+  }
+  
+  .close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #f44336;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .close-button:hover {
+    background: #d32f2f;
+  }
+  

@@ -1,0 +1,144 @@
+/* Navbar Styling */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #2c3e50; /* Dark background */
+  position: fixed; /* Fixed position */
+  top: 0; /* Position at the top */
+  left: 0; /* Position at the left edge */
+  width: 100%; /* Full width */
+  z-index: 1000; /* Ensure it stays on top of other elements */
+}
+
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none; /* Remove underline from link */
+}
+
+.logo-icon {
+  font-size: 1.5em; /* Adjust icon size as needed */
+  color: #ecf0f1; /* Light grey color for icon */
+  margin-right: 10px; /* Margin to separate icon from text */
+}
+
+.logo-text {
+  color: #ecf0f1; /* Light grey color for text */
+  font-size: 1.5em;
+  font-weight: bold;
+  text-decoration: none; /* Remove underline from link */
+}
+
+.navbar-links {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-links li {
+  position: relative; /* Needed for absolute positioning of dropdown */
+  margin-left: 20px;
+  color: #ecf0f1; /* Light grey color for text */
+}
+
+.navbar-links li a {
+  color: #ecf0f1; /* Light grey color for text */
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  white-space: nowrap; /* Prevent text wrapping */
+}
+
+.service-dropdown {
+  position: relative;
+}
+
+.service-dropdown .dropdown-menu {
+  display: grid; /* Use grid layout */
+  grid-template-columns: repeat(3, 1fr); /* Three equal columns */
+  width: 100vw; /* Full viewport width */
+  position: fixed; /* Fix position relative to viewport */
+  left: 0; /* Align with the left edge of the viewport */
+  top: 50px; /* Position slightly below the navbar (adjusted upward) */
+  background-color: #34495e; /* Darker background for dropdown */
+  border: 1px solid #2c3e50; /* Dark border */
+  border-radius: 5px;
+  padding: 10px;
+  z-index: 1100; /* Ensure it stays above other elements */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Optional: add shadow for better visibility */
+}
+
+.dropdown-column {
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid #2c3e50; /* Line between columns */
+  padding-right: 15px; /* Add padding to the right of each column */
+}
+
+.dropdown-column:last-child {
+  border-right: none; /* Remove line from the last column */
+}
+
+.dropdown-column:first-child {
+  margin-left: 15px; /* Move the first column slightly to the right */
+}
+
+.dropdown-column a {
+  color: #ecf0f1; /* Light grey color for text */
+  text-decoration: none;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  border-radius: 4px; /* Slight rounding for grid items */
+  margin-bottom: 5px; /* Space between links */
+}
+
+.dropdown-column a:hover {
+  background-color: #9c2c98; /* Light teal hover background */
+  color: #ffffff; /* White color for text on hover */
+}
+
+.account-dropdown {
+  position: relative;
+  cursor: pointer;
+  color: #ecf0f1; /* Light grey color for the account icon */
+  z-index: 1200; /* Ensure it stays above other elements, especially the service dropdown */
+  margin-right: 28px; /* Add margin to the right */
+}
+
+.account-dropdown .fa-user {
+  font-size: 1.5em; /* Increase icon size for better visibility */
+}
+
+.account-dropdown .dropdown-menu {
+  display: flex; /* Use flexbox for vertical alignment */
+  flex-direction: column; /* Stack items vertically */
+  width: 200px; /* Fixed width for account dropdown */
+  position: absolute;
+  right: 0;
+  top: 100%; /* Position below the dropdown trigger */
+  background-color: #34495e; /* Darker background for dropdown */
+  border: 1px solid #2c3e50; /* Dark border */
+  border-radius: 5px;
+  padding: 10px;
+  z-index: 1200; /* Ensure it stays above other elements */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Optional: add shadow for better visibility */
+}
+
+.account-dropdown a {
+  color: #ecf0f1; /* Light grey color for text */
+  text-decoration: none;
+  padding: 10px; /* Increased padding for better click area */
+  display: flex;
+  align-items: center;
+  border-radius: 4px; /* Slight rounding for grid items */
+  margin-bottom: 5px; /* Space between links */
+}
+
+.account-dropdown a:hover {
+  background-color: #9c2c98; /* Light teal hover background */
+  color: #ffffff; /* White color for text on hover */
+}

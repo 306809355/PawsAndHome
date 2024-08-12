@@ -1,0 +1,305 @@
+/* General Styles */
+.adopt-pet-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+.adopt-pet-filter-sidebar {
+    position: fixed;
+    top: 0;
+    left: 0; /* Fixed to the left */
+    width: 300px;
+    padding: 20px;
+    background-color: #fff;
+    border-right: 2px solid #0f0a0c; /* Added border */
+    height: 100vh;
+    overflow-y: auto;
+}
+
+.adopt-pet-content {
+    flex: 1;
+    margin-left: 380px; /* Adjusted margin to account for the sidebar width + padding */
+    padding: 50px;
+    overflow-y: auto;
+}
+
+.adopt-pet-filter-sidebar h2 {
+    margin-top: 0;
+    font-size: 1.5em;
+    color: #333;
+}
+
+.adopt-pet-filter-group {
+    margin-bottom: 15px;
+}
+
+.adopt-pet-filter-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    text-align: left;
+    padding: 7px;
+}
+
+.adopt-pet-filter-group input, .adopt-pet-filter-group select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.adopt-pet-apply-filter, .adopt-pet-clear-filter {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%;
+    margin-top: 10px; /* Space between buttons */
+}
+
+.adopt-pet-apply-filter:hover {
+    background-color: #218838;
+}
+
+.adopt-pet-clear-filter {
+    background-color: #dc3545; /* Red background for the clear button */
+}
+
+.adopt-pet-clear-filter:hover {
+    background-color: #c82333; /* Darker red on hover */
+}
+
+/* Pets Content */
+.adopt-pet-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    justify-content: center;
+}
+
+.adopt-pet-card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    cursor: pointer;
+}
+
+.adopt-pet-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.adopt-pet-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.adopt-pet-info {
+    padding: 15px;
+}
+
+.adopt-pet-info h2 {
+    margin-top: 0;
+    font-size: 1.5em;
+    color: #333;
+}
+
+.adopt-pet-info p {
+    margin: 5px 0;
+    color: #666;
+    display: flex;
+    align-items: center;
+}
+
+.adopt-pet-info p svg {
+    margin-right: 8px;
+}
+
+/* Modal Styles */
+.adopt-pet-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.adopt-pet-modal-content {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    max-width: 90%;
+    width: 500px;
+    position: relative;
+}
+
+.adopt-pet-modal-image {
+    width: 100%;
+    height: auto;
+    max-height: 300px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.adopt-pet-modal-info {
+    padding: 15px;
+    color: #333;
+}
+
+.adopt-pet-modal-info h2 {
+    margin-top: 0;
+    font-size: 1.8em;
+    color: #333;
+}
+
+.adopt-pet-modal-info p {
+    margin: 10px 0;
+    color: #666;
+}
+
+.adopt-pet-modal-description {
+    max-height: 120px; /* Limit height to ensure four lines */
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.adopt-pet-close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #ff69b4; /* Pink background for the close button */
+    border: none;
+    border-radius: 5px;
+    color: #fff; /* White text */
+    padding: 5px 10px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.adopt-pet-close-button:hover {
+    background-color: #e6007e; /* Darker pink on hover */
+}
+
+.adopt-pet-adopt-button {
+    display: block;
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: #111713; /* Green background */
+    color: #fff; /* White text */
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.adopt-pet-modal-buttons {
+    display: flex; /* Use flexbox for layout */
+    justify-content: space-between; /* Space buttons out to opposite ends */
+    margin-top: 15px; /* Add space above the buttons */
+}
+
+.adopt-pet-viewmore-button,
+.adopt-pet-adopt-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.adopt-pet-adopt-button {
+    background-color: #28a745; /* Green background */
+    color: #fff; /* White text */
+    text-decoration: none;
+}
+
+.adopt-pet-adopt-button:hover {
+    background-color: #218838; /* Darker green on hover */
+}
+
+.adopt-pet-viewmore-button {
+    background-color: #f1d311; /* Yellow background */
+    color: #333; /* Dark text */
+}
+
+.adopt-pet-viewmore-button:hover {
+    background-color: #e2b700; /* Darker yellow on hover */
+}
+
+
+/* Responsive Design - Adjustments for smaller screens */
+@media (max-width: 1200px) {
+    .adopt-pet-list {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .adopt-pet-container {
+        flex-direction: column;
+    }
+
+    .adopt-pet-filter-sidebar {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid #ddd;
+        position: relative;
+        height: auto;
+    }
+
+    .adopt-pet-content {
+        margin-left: 0; /* Reset margin */
+        padding: 10px;
+    }
+
+    .adopt-pet-list {
+        grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
+    }
+
+    .adopt-pet-image {
+        height: 150px;
+    }
+
+    .adopt-pet-info h2 {
+        font-size: 1.2em;
+    }
+
+    .adopt-pet-info p {
+        font-size: 0.9em;
+    }
+}
+
+@media (max-width: 480px) {
+    .adopt-pet-image {
+        height: 120px;
+    }
+
+    .adopt-pet-info {
+        padding: 10px;
+    }
+
+    .adopt-pet-info h2 {
+        font-size: 1em;
+    }
+
+    .adopt-pet-info p {
+        font-size: 0.8em;
+    }
+
+    .adopt-pet-apply-filter, .adopt-pet-clear-filter {
+        font-size: 0.9em;
+    }
+}
