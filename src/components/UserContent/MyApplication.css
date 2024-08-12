@@ -1,0 +1,63 @@
+.applications-container {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+h2 {
+    color: #333;
+}
+
+.search-input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.my-applications-summary {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 1 row, 3 columns */
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.summary-item {
+    padding: 20px; /* Increased padding for height */
+    border: 1px solid #ddd;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+.summary-item p {
+    margin: 0;
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+}
+
+.applications-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.applications-table th, .applications-table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+
+.applications-table th {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.applications-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.applications-table tr:hover {
+    background-color: #ddd;
+}

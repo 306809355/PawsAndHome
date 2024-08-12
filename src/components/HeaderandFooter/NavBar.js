@@ -75,12 +75,19 @@ function NavBar({ isLoggedIn, onLogout }) {
 
               {/* Second Column */}
               <div className="dropdown-column">
-                <h4>Support & Resources</h4>
+                <h4>Resources</h4>
                 <Link to="/pet-care-tips" onClick={() => setServiceDropdownOpen(false)}>
                   Pet Care Tips
                 </Link>
                 <Link to="/pet-behavior-help" onClick={() => setServiceDropdownOpen(false)}>
                   Pet Behavior Help
+                </Link>
+              </div>
+              {/* Third Column */}
+              <div className="dropdown-column">
+                <h4>Support</h4>
+                <Link to="/myapplication" onClick={() => setServiceDropdownOpen(false)}>
+                  Application status
                 </Link>
               </div>
             </div>
@@ -99,13 +106,13 @@ function NavBar({ isLoggedIn, onLogout }) {
             <div className="dropdown-menu">
               {isLoggedIn ? (
                 <>
-                  <Link to="/settings" onClick={() => setAccountDropdownOpen(false)}>
-                    <FontAwesomeIcon icon={faCog} /> Settings
+                  <Link to="/profile" onClick={() => setAccountDropdownOpen(false)}>
+                    <FontAwesomeIcon icon={faCog} /> view Profile
                   </Link>
                   <Link to="/change-password" onClick={() => setAccountDropdownOpen(false)}>
                     <FontAwesomeIcon icon={faKey} /> Change Password
                   </Link>
-                  <Link to="#" onClick={handleLogout}>
+                  <Link to="/" onClick={handleLogout}>
                     <FontAwesomeIcon icon={faSignOutAlt} /> Sign Out
                   </Link>
                 </>

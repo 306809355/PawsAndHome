@@ -1,11 +1,16 @@
 import React, { useState } from 'react';
+import { useParams, useNavigate } from 'react-router-dom'; // Import useNavigate for redirection
 import './Payment.css';
-
 import payment from '../images/UPI.jpg';
 
 const Payment = () => {
+  const { applicationId } = useParams(); // Extract applicationId from URL parameters
+  const navigate = useNavigate(); // Initialize useNavigate for redirection
   const [referenceId, setReferenceId] = useState('');
   const [screenshot, setScreenshot] = useState(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitSuccess, setSubmitSuccess] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
 
   const handleReferenceIdChange = (e) => {
     setReferenceId(e.target.value);
@@ -15,11 +20,41 @@ const Payment = () => {
     setScreenshot(e.target.files[0]);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle payment submission logic here
-    console.log('Reference ID:', referenceId);
-    console.log('Screenshot:', screenshot);
+    setIsSubmitting(true);
+    setSubmitSuccess('');
+    setErrorMessage('');
+
+    const formData = new FormData();
+    formData.append('referenceId', referenceId);
+    if (screenshot) {
+      formData.append('screenshot', screenshot);
+    }
+
+    try {
+      const response = await fetch(`http://localhost:8080/applications/${applicationId}/update-payment`, {
+        method: 'POST',
+        body: formData,
+      });
+
+      if (response.ok) {
+        // Set success message
+        setSubmitSuccess('Application Submitted');
+
+        // Redirect to home page after 10 seconds
+        setTimeout(() => {
+          navigate('/');
+        }, 1500);
+      } else {
+        const errorData = await response.text(); // Adjust to parse text if the server returns a plain message
+        setErrorMessage(errorData || 'Failed to submit payment.');
+      }
+    } catch (error) {
+      setErrorMessage('An error occurred while submitting the payment.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -49,8 +84,16 @@ const Payment = () => {
             required
           />
         </div>
-        <button type="submit" className="submit-btn">Submit Payment</button>
+        <button
+          type="submit"
+          className="submit-btn"
+          disabled={isSubmitting}
+        >
+          {isSubmitting ? 'Submitting...' : 'Submit Payment'}
+        </button>
       </form>
+      {submitSuccess && <p className="success-message">{submitSuccess}</p>}
+      {errorMessage && <p className="error-message">{errorMessage}</p>}
     </div>
   );
 };

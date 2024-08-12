@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './Profile.css';
@@ -8,8 +9,9 @@ import Avatar from 'react-avatar';
 function Profile() {
   const { isLoggedIn, userId, userData } = useAuth();
   const [profileData, setProfileData] = useState(userData);
-  const [loading, setLoading] = useState(!userData); // Loading only if no userData
+  const [loading, setLoading] = useState(!userData);
   const [error, setError] = useState(null);
+  const [isEditing, setIsEditing] = useState(false);
 
   useEffect(() => {
     if (!isLoggedIn) {
@@ -44,6 +46,28 @@ function Profile() {
     fetchProfileData();
   }, [isLoggedIn, userId, userData]);
 
+  const handleEditClick = () => {
+    setIsEditing(!isEditing);
+  };
+
+  const handleSaveClick = async () => {
+    // Add form submission logic here
+    try {
+      await axios.put(`http://localhost:8080/users/profile/${userId}`, profileData);
+      setIsEditing(false);
+    } catch (err) {
+      setError('Failed to update profile data.');
+    }
+  };
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setProfileData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+
   if (loading) {
     return <div className="profile-loading">Loading your profile...</div>;
   }
@@ -53,7 +77,8 @@ function Profile() {
   }
 
   return (
-    <div className="profile-container">
+    <div className="profile-page-container">
+      <div className='profile-background'></div>
       <h1 className="profile-title">Your Profile</h1>
       <div className="profile-card">
         <div className="profile-avatar">
@@ -61,59 +86,42 @@ function Profile() {
             name={profileData?.username || 'User'}
             size="100"
             round={true}
-            color="#007bff" // Custom color for the avatar background
-            textSizeRatio={2} // Adjust text size
+            color="#007bff"
+            textSizeRatio={2}
           />
         </div>
-        <div className="profile-info">
-          <FaUser className="profile-icon" />
-          <div className="profile-detail">
-            <label className="profile-label">Name:</label>
-            <span className="profile-value">{profileData?.username}</span>
-          </div>
+        <div className="profile-details-grid">
+          {Object.entries({
+            username: { icon: FaUser, label: 'Name' },
+            email: { icon: FaEnvelope, label: 'Email' },
+            phoneNumber: { icon: FaPhone, label: 'Phone' },
+            address: { icon: FaMapMarkedAlt, label: 'Address' },
+            residentialType: { icon: FaHome, label: 'Residential Type' },
+            pincode: { icon: FaPencilAlt, label: 'Pincode' },
+            dob: { icon: FaCalendarAlt, label: 'Date of Birth' },
+          }).map(([key, { icon: Icon, label }]) => (
+            <div key={key} className="profile-info">
+              <Icon className="profile-icon" />
+              <div className="profile-detail">
+                <label className="profile-label">{label}:</label>
+                {isEditing ? (
+                  <input
+                    type={key === 'dob' ? 'date' : 'text'}
+                    name={key}
+                    value={profileData[key] || ''}
+                    onChange={handleInputChange}
+                    className="profile-edit-input"
+                  />
+                ) : (
+                  <span className="profile-value">{profileData[key]}</span>
+                )}
+              </div>
+            </div>
+          ))}
         </div>
-        <div className="profile-info">
-          <FaEnvelope className="profile-icon" />
-          <div className="profile-detail">
-            <label className="profile-label">Email:</label>
-            <span className="profile-value">{profileData?.email}</span>
-          </div>
-        </div>
-        <div className="profile-info">
-          <FaPhone className="profile-icon" />
-          <div className="profile-detail">
-            <label className="profile-label">Phone:</label>
-            <span className="profile-value">{profileData?.phoneNumber}</span>
-          </div>
-        </div>
-        <div className="profile-info">
-          <FaMapMarkedAlt className="profile-icon" />
-          <div className="profile-detail">
-            <label className="profile-label">Address:</label>
-            <span className="profile-value">{profileData?.address}</span>
-          </div>
-        </div>
-        <div className="profile-info">
-          <FaHome className="profile-icon" />
-          <div className="profile-detail">
-            <label className="profile-label">Residential Type:</label>
-            <span className="profile-value">{profileData?.residentialType}</span>
-          </div>
-        </div>
-        <div className="profile-info">
-          <FaPencilAlt className="profile-icon" />
-          <div className="profile-detail">
-            <label className="profile-label">Pincode:</label>
-            <span className="profile-value">{profileData?.pincode}</span>
-          </div>
-        </div>
-        <div className="profile-info">
-          <FaCalendarAlt className="profile-icon" />
-          <div className="profile-detail">
-            <label className="profile-label">Date of Birth:</label>
-            <span className="profile-value">{profileData?.dob}</span>
-          </div>
-        </div>
+        <button className="profile-edit-button" onClick={isEditing ? handleSaveClick : handleEditClick}>
+          {isEditing ? 'Save' : 'Edit'}
+        </button>
       </div>
     </div>
   );

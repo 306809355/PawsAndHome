@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import './AdoptionForm.css'; // Ensure you have this CSS file for styling
-import front from '../images/Petadopt.jpg'; // Update the path as necessary
+import { useParams, useNavigate } from 'react-router-dom';
+import { useAuth } from '../Authorization/AuthContext';
+import './AdoptionForm.css';
+import front from '../images/Petadopt.jpg';
 import { FaCheckCircle, FaTimesCircle, FaHeart } from 'react-icons/fa';
 import Footer from '../HeaderandFooter/Footer';
 
-// Component for rendering each adoption factor
 const AdoptionFactor = ({ icon, title, description }) => (
   <div className="grid-item">
     <div className="icon" aria-label={title}>
@@ -17,7 +17,8 @@ const AdoptionFactor = ({ icon, title, description }) => (
 );
 
 const AdoptionForm = () => {
-  const { petId } = useParams(); // Get the pet ID from URL
+  const { petId } = useParams();
+  const { userId } = useAuth();
   const [currentStep, setCurrentStep] = useState(1);
   const [formData, setFormData] = useState({
     name: '',
@@ -25,18 +26,12 @@ const AdoptionForm = () => {
     email: '',
     phoneNumber: '',
     address: '',
-    address2: '',
-    city: '',
-    state: '',
     postalCode: '',
-    country: '',
-    ownPets: '',
-    petNames: '',
-    petBreeds: '',
-    petBehavior: '',
     signature: '',
     agreeToTerms: false,
   });
+  const [applicationId, setApplicationId] = useState(null);
+  const navigate = useNavigate();
 
   const factors = [
     {
@@ -72,19 +67,32 @@ const AdoptionForm = () => {
   ];
 
   useEffect(() => {
-    // Fetch pet details when petId is available
+    if (userId) {
+      fetch(`http://localhost:8080/users/profile/${userId}`)
+        .then(response => response.json())
+        .then(data => {
+          setFormData(prevData => ({
+            ...prevData,
+            name: data.username,
+            email: data.email,
+            phoneNumber: data.phoneNumber,
+            address: data.address,
+            postalCode: data.pincode,
+          }));
+        })
+        .catch(error => console.error('Error fetching user details:', error));
+    }
+
     fetch(`http://localhost:8080/api/pets/${petId}`)
       .then(response => response.json())
       .then(data => {
         setFormData(prevData => ({
           ...prevData,
           petName: data.name,
-          petNames: `${data.id}-${data.name}`,
-          petBreeds: data.breed,
         }));
       })
       .catch(error => console.error('Error fetching pet details:', error));
-  }, [petId]);
+  }, [userId, petId]);
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -108,8 +116,30 @@ const AdoptionForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(formData);
-    // Handle form submission, e.g., send data to a server
+
+    const currentDate = new Date().toISOString().split('T')[0]; // Format as yyyy-mm-dd
+
+    const submissionData = {
+      user: { userId: userId }, // User reference
+      pet: { id: petId }, // Pet reference
+      applicationDate: currentDate,
+    };
+
+    fetch('http://localhost:8080/applications', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(submissionData),
+    })
+      .then(response => response.json())
+      .then(data => {
+        if (data && data.applicationId) {
+          setApplicationId(data.applicationId);
+          navigate(`/payment/${data.applicationId}`); // Redirect to Payment page with application ID
+        } else {
+          console.error('No application ID returned from the server.');
+        }
+      })
+      .catch(error => console.error('Error submitting application:', error));
   };
 
   const renderStep = () => {
@@ -121,7 +151,7 @@ const AdoptionForm = () => {
             <input type="text" name="name" value={formData.name} onChange={handleChange} required />
 
             <label>Pet Choice*</label>
-            <input type="text" name="petNames" value={formData.petNames} readOnly />
+            <input type="text" name="petName" value={formData.petName} readOnly />
 
             <label>Email Address*</label>
             <input type="email" name="email" value={formData.email} onChange={handleChange} required />
@@ -130,7 +160,7 @@ const AdoptionForm = () => {
             <input type="text" name="phoneNumber" value={formData.phoneNumber} onChange={handleChange} required />
 
             <label>Address*</label>
-            <input type="text" name="address" value={formData.address} onChange={handleChange} required placeholder='Address' />
+            <input type="text" name="address" value={formData.address} onChange={handleChange} required />
 
             <label>Postal Code*</label>
             <input type="text" name="postalCode" value={formData.postalCode} onChange={handleChange} required />
@@ -167,7 +197,7 @@ const AdoptionForm = () => {
                 </div>
                 <br />
                 <div className="signature-section">
-                  <label style={{ textAlign: 'left' }}>
+                  <label>
                     Signature*
                     <input
                       type="text"
@@ -187,9 +217,8 @@ const AdoptionForm = () => {
         return (
           <>
             <h1>Review and Submit</h1>
-            {/* Display a summary of the form data here */}
             <p><strong>Full Name:</strong> {formData.name}</p>
-            <p><strong>Pet Choice:</strong> {formData.petNames}</p>
+            <p><strong>Pet Choice:</strong> {formData.petName}</p>
             <p><strong>Email Address:</strong> {formData.email}</p>
             <p><strong>Phone Number:</strong> {formData.phoneNumber}</p>
             <p><strong>Address:</strong> {formData.address}</p>
@@ -223,13 +252,12 @@ const AdoptionForm = () => {
       </div>
       <div className="call-to-action grid-container">
         <div className="cta-item heart">
-          <FaHeart className="heart-icon" aria-label="Heart Icon" />
+        <FaHeart className="heart-icon" aria-label="Heart Icon" />
           <span className="heart-text">Adopt, Don't Shop</span>
         </div>
         <div className="cta-item info">
           <p>#AdoptLove</p>
-          <p>Approximately 1478 dogs & cats die every day on the road in India. ThePawsAndHome is on a mission to provide every dog and cat a home before 2035. It’s just one of the many
-          It’s just one of the many ways ThePawsAndHome gives back and helps you become a part of something larger. Join ThePetStar Community and help set up pet houses in your surroundings for strays.</p>
+          <p>Approximately 1478 dogs & cats die every day on the road in India. ThePawsAndHome is on a mission to provide every dog and cat a home before 2035. It’s just one of the many ways ThePawsAndHome gives back and helps you become a part of something larger. Join ThePetStar Community and help set up pet houses in your surroundings for strays.</p>
         </div>
       </div>
       <div className="summary-and-form-grid">

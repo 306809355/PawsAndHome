@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Sidebar from './Sidebar';
 import PetsAvailable from '../PetsAvailable';
-import ViewRequests from '../ViewRequests';
 import AddPet from '../DashboardContent/AddPet.js';
 import './DashboardLayout.css';
 import PetUpdate from '../DashboardContent/PetUpdate.js';
@@ -26,7 +25,6 @@ const DashboardLayout = () => {
           <Route path="pets/update" element={<PetUpdate/>} />
           <Route path="pets/add" element={<AddPet/>} />
           <Route path="pets/remove" element={<PetDelete/>} />
-          <Route path="requests" element={<ViewRequests />} />
           <Route path="users/profiles" element={<UserDetail/>} />
           {/* Other routes */}
         </Routes>

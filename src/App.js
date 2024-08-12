@@ -15,6 +15,8 @@ import Payment from './components/UserContent/Payment';
 import { AuthProvider, useAuth } from './components/Authorization/AuthContext';
 import './App.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
+import MyApplications from './components/UserContent/MyApplication';
+import ChangePassword from './components/UserContent/ChangePassword';
 
 function App() {
   const { isLoggedIn, userId } = useAuth();
@@ -38,10 +40,19 @@ function App() {
             <Route path="/pet/:id" element={<PetDetail />} />
             <Route path="/adopt/:petId" element={<AdoptionForm />} />
             <Route
-              path="/settings"
+              path="/profile"
               element={isLoggedIn ? <Profile /> : <Navigate to="/login" />}
             />
-            <Route path="/payment" element={<Payment />} />
+            <Route path="/payment/:applicationId" element={<Payment />} />
+            <Route
+  path="/myapplication"
+  element={isLoggedIn ? <MyApplications/> : <Navigate to="/login" />}
+/>
+            <Route
+  path="/change-password"
+  element={isLoggedIn ? <ChangePassword/> : <Navigate to="/login" />}
+/>
+
           </Routes>
         </div>
       </div>
