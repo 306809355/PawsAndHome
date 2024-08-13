@@ -17,6 +17,7 @@ import './App.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import MyApplications from './components/UserContent/MyApplication';
 import ChangePassword from './components/UserContent/ChangePassword';
+import ThankYouPage from './components/UserContent/ThankYouPage';
 
 function App() {
   const { isLoggedIn, userId } = useAuth();
@@ -52,6 +53,7 @@ function App() {
   path="/change-password"
   element={isLoggedIn ? <ChangePassword/> : <Navigate to="/login" />}
 />
+            <Route path="/thank/page" element = {<ThankYouPage/>}/>
 
           </Routes>
         </div>

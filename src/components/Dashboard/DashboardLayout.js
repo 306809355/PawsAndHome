@@ -7,6 +7,9 @@ import './DashboardLayout.css';
 import PetUpdate from '../DashboardContent/PetUpdate.js';
 import UserDetail from '../DashboardContent/UserDetail.js';
 import PetDelete from '../DashboardContent/PetDelete.js';
+import ViewApplication from '../DashboardContent/ViewApplication.js';
+import PaymentManagement from '../DashboardContent/Paymentmanage.js';
+import PetPickup from '../DashboardContent/PetPickup.js';
 
 const DashboardLayout = () => {
   const [isSidebarExpanded, setIsSidebarExpanded] = useState(true);
@@ -26,6 +29,11 @@ const DashboardLayout = () => {
           <Route path="pets/add" element={<AddPet/>} />
           <Route path="pets/remove" element={<PetDelete/>} />
           <Route path="users/profiles" element={<UserDetail/>} />
+          <Route path="view/application" element={<ViewApplication/>} />
+          <Route path="payment/manage" element={<PaymentManagement/>} />
+          <Route path="pickup/manage" element={<PetPickup/>} />
+
+
           {/* Other routes */}
         </Routes>
       </div>

@@ -44,7 +44,7 @@ const Payment = () => {
 
         // Redirect to home page after 10 seconds
         setTimeout(() => {
-          navigate('/');
+          navigate('/thank/page');
         }, 1500);
       } else {
         const errorData = await response.text(); // Adjust to parse text if the server returns a plain message

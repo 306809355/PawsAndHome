@@ -1,0 +1,75 @@
+
+  .pickup-main-content {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .pickup-header {
+    margin-bottom: 20px;
+  }
+  
+  .pickup-stats {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  
+  .pickup-stat-box {
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    flex: 1;
+    margin-right: 20px;
+  }
+  
+  .pickup-stat-box:last-child {
+    margin-right: 0;
+  }
+  
+  .pickup-request-table table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .pickup-request-table th, .pickup-request-table td {
+    padding: 15px;
+    text-align: left;
+  }
+  
+  .pickup-request-table th {
+    background-color: #f4f4f4;
+  }
+  
+  .pickup-request-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  .pickup-view-button, .pickup-action-button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .pickup-view-button {
+    background-color: #31e23a;
+    color: white;
+  }
+  
+  .pickup-action-button.pickup-accept {
+    background-color: #87d37c;
+    color: white;
+    margin-right: 8px;
+  }
+  
+  .pickup-action-button.pickup-decline {
+    background-color: #d9534f;
+    color: white;
+  }
+  

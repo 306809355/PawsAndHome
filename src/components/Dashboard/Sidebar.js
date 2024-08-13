@@ -55,9 +55,10 @@ const Sidebar = ({ isExpanded, toggleSidebar }) => {
         </div>
         {isRequestsExpanded && isExpanded && (
           <div className="sub-menu">
-            <div className="sidebar-item" onClick={handleNavigation('/dashboard/requests/view')}>View Requests</div>
-            <div className="sidebar-item" onClick={handleNavigation('/dashboard/requests/approve')}>Approve Requests</div>
-            <div className="sidebar-item" onClick={handleNavigation('/dashboard/requests/history')}>Request History</div>
+            <div className="sidebar-item" onClick={handleNavigation('/dashboard/view/application')}>Request</div>
+            <div className="sidebar-item" onClick={handleNavigation('/dashboard/payment/manage')}>Payment Management</div>
+            <div className="sidebar-item" onClick={handleNavigation('/dashboard/pickup/manage')}>Pet Pickup</div>
+    
           </div>
         )}
         <div className="sidebar-item" onClick={handleExpand(setIsUsersExpanded)}>
@@ -77,6 +78,7 @@ const Sidebar = ({ isExpanded, toggleSidebar }) => {
         )}
 
       </div>
+      
       <div className="toggle-button" onClick={toggleSidebar}>
         {isExpanded ? '<' : '>'}
       </div>

@@ -1,0 +1,55 @@
+.paymentmanagement-container {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .paymentmanagement-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .paymentmanagement-table, 
+  .paymentmanagement-table th, 
+  .paymentmanagement-table td {
+    border: 1px solid #ddd;
+  }
+  
+  .paymentmanagement-table th, 
+  .paymentmanagement-table td {
+    padding: 12px;
+    text-align: left;
+  }
+  
+  .paymentmanagement-table th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+  }
+  
+  .paymentmanagement-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  .paymentmanagement-table tr:hover {
+    background-color: #f1f1f1;
+  }
+  
+  /* New CSS for Serial Number column */
+  .paymentmanagement-table th:first-child,
+  .paymentmanagement-table td:first-child {
+    width: 5%; /* Adjust width as needed */
+    text-align: center;
+  }
+  
+  .paymentmanagement-table button.view-details {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    cursor: pointer;
+    background-color: #2196f3; /* Blue color */
+  }
+  
+  .paymentmanagement-table button.view-details:hover {
+    opacity: 0.8;
+  }
+  

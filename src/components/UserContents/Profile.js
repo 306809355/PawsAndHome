@@ -79,7 +79,7 @@ function Profile() {
   return (
     <div className="profile-page-container">
       <div className='profile-background'></div>
-      <h1 className="profile-title">Your Profile</h1>
+      <h1 className="profile-title">Hi, {profileData?.username}!</h1>
       <div className="profile-card">
         <div className="profile-avatar">
           <Avatar
