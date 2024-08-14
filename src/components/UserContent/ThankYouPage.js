@@ -28,7 +28,7 @@ const ThankYouPage = () => {
                             date is <strong className="thank-strong">{deliveryDate.toDateString()}</strong>. We hope you enjoy many happy moments together!
                             Contact the shelter via <span className="thank-span">pawandhome@gmail.com</span> in case of any queries.
                         </p>
-                        <button className="thank-back-button" onClick={() => navigate('/UserApplications')}>Back</button>
+                        <button className="thank-back-button" onClick={() => navigate('/')}>Back</button>
                     </div>
                 </div>
             </center>
